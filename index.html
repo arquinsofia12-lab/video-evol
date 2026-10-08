@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EVOL – Guion de rodaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#1d1611; --panel:#2a2019; --linea:#43342a;
+  --texto:#f1e8d8; --suave:#b9a98f;
+  --oro:#e3a857; --dusk:#7ea1bd; --ok:#9bc08a;
+  --titulo:'Bricolage Grotesque',system-ui,sans-serif;
+  --cuerpo:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--fondo);color:var(--texto);font:400 16px/1.5 var(--cuerpo)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+
+/* Portada */
+header.portada{padding:56px 24px 36px;max-width:1200px;margin:auto}
+.marca{font:800 clamp(72px,16vw,180px)/.85 var(--titulo);letter-spacing:-.04em;color:var(--oro)}
+.sub{margin-top:18px;font-size:19px;color:var(--suave);max-width:46ch}
+.resumen{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.barra{flex:1 1 220px;max-width:420px;height:10px;background:var(--panel);border-radius:99px;overflow:hidden;border:1px solid var(--linea)}
+.barra i{display:block;height:100%;width:0;background:var(--oro);transition:width .4s}
+#total{font-weight:700}
+#reiniciar{background:none;border:1px solid var(--linea);padding:6px 14px;border-radius:99px;color:var(--suave)}
+#reiniciar:hover{border-color:var(--oro);color:var(--texto)}
+
+/* Navegación */
+nav{position:sticky;top:0;z-index:20;background:rgba(29,22,17,.94);backdrop-filter:blur(8px);border-block:1px solid var(--linea)}
+nav .fila{max-width:1200px;margin:auto;display:flex;gap:8px;padding:10px 24px;overflow-x:auto}
+nav a{flex:none;text-decoration:none;color:var(--texto);padding:8px 14px;border-radius:99px;border:1px solid var(--linea);font-weight:500;font-size:15px}
+nav a small{color:var(--suave);margin-left:6px}
+nav a:hover{border-color:var(--oro)}
+nav a.listo{border-color:var(--ok)}
+nav a.listo small{color:var(--ok)}
+
+/* Spots */
+main{max-width:1200px;margin:auto;padding:12px 24px 80px}
+section.spot{padding:44px 0;border-bottom:1px solid var(--linea)}
+section.spot:last-child{border:0}
+.cabecera h2{font:800 clamp(30px,5vw,48px)/1.05 var(--titulo);letter-spacing:-.02em}
+.luz{margin-top:8px;color:var(--dusk);font-weight:500}
+.cuerpo{display:grid;grid-template-columns:260px 1fr;gap:28px;margin-top:24px;align-items:start}
+.real{background:var(--panel);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+.real button{display:block;width:100%;border:0;background:none;padding:0}
+.real img{width:100%;max-height:420px;object-fit:cover;display:block}
+.real p{padding:10px 14px;font-size:14px;color:var(--suave)}
+h3{font:500 15px var(--cuerpo);color:var(--suave);margin-bottom:12px}
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.toma{background:var(--panel);border:1px solid var(--linea);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.toma.hecha{border-color:var(--ok)}
+.toma .foto{position:relative;display:block;width:100%;padding:0;border:0;background:#000;aspect-ratio:4/3}
+.toma img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s}
+.toma.hecha img{opacity:.55}
+.toma label{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;font-weight:500}
+.toma input{width:20px;height:20px;accent-color:var(--ok)}
+.faltante{display:grid;place-items:center;height:100%;padding:12px;text-align:center;font-size:13px;color:var(--suave);background:var(--panel)}
+.notas{margin-top:22px}
+.notas textarea{width:100%;min-height:76px;resize:vertical;background:var(--panel);color:var(--texto);border:1px solid var(--linea);border-radius:10px;padding:12px;font:inherit}
+.notas textarea::placeholder{color:#8a7a64}
+
+/* Visor */
+#visor{position:fixed;inset:0;z-index:50;background:rgba(10,7,5,.95);display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+#visor.abierto{display:flex}
+#visor img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:8px}
+#visor .pie{margin-top:14px;display:flex;gap:12px;align-items:center;color:var(--suave)}
+#visor button{background:var(--panel);border:1px solid var(--linea);border-radius:99px;padding:8px 18px}
+#visor button:hover{border-color:var(--oro)}
+
+@media (max-width:760px){
+  .cuerpo{grid-template-columns:1fr}
+  .real img{max-height:320px}
+  header.portada{padding-top:36px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <h1 class="marca">EVOL</h1>
+  <p class="sub">Guion de rodaje. Mira cada lugar, elige tus ideas de toma y marca las que ya grabaste.</p>
+  <div class="resumen">
+    <div class="barra" aria-hidden="true"><i id="avance"></i></div>
+    <span id="total"></span>
+    <button id="reiniciar" type="button">Reiniciar avance</button>
+  </div>
+</header>
+
+<nav aria-label="Lugares de grabación"><div class="fila" id="menu"></div></nav>
+<main id="spots"></main>
+
+<div id="visor" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <img id="visorImg" alt="">
+  <div class="pie">
+    <button type="button" id="ant">Anterior</button>
+    <span id="visorTxt"></span>
+    <button type="button" id="sig">Siguiente</button>
+    <button type="button" id="cerrar">Cerrar</button>
+  </div>
+</div>
+
+<script>
+/* ============ CONFIGURACIÓN ============
+   Las imágenes se leen de la carpeta CARPETA, por nombre:
+   "<prefijo> idea 1.png", "<prefijo> idea 2.png"... y el archivo "real".
+   Para cambiar el orden de rodaje, reordena esta lista.
+   La nota de luz es una sugerencia: edítala a tu gusto. */
+const CARPETA = 'video evol';
+const SPOTS = [
+  {id:'balcon',   nombre:'Balcón',                   prefijo:'balcon',                   ideas:4, real:'balcon real.png',                  luz:'Atardecer con el sol bajo al fondo'},
+  {id:'cabana',   nombre:'Cabaña exterior',          prefijo:'cabaña exterior',          ideas:5, real:'cabaña exterior real.png',         luz:'Atardecer sobre la fachada'},
+  {id:'corredor', nombre:'Corredor exterior con sillas', prefijo:'corredor exterior sillas', ideas:4, real:'corredor exterior sillas real.png', luz:'Atardecer a contraluz desde el valle'},
+  {id:'garaje',   nombre:'Garaje',                   prefijo:'garaje',                   ideas:1, real:'garaje real.jpg',                  luz:'Espacio oscuro con luz de proyector'},
+  {id:'habitacion',nombre:'Habitación',              prefijo:'habitacion',               ideas:4, real:'habitacion real.png',              luz:'Luz cálida entrando por la ventana'},
+  {id:'loft',     nombre:'Loft con sofá',            prefijo:'loft con sofa',            ideas:5, real:'loft con sofa real.png',           luz:'Luz cálida de ventana, ambiente tenue'},
+  {id:'chimenea', nombre:'Sala de la chimenea',      prefijo:'sala chimenea',            ideas:5, real:'sala chimenea real.png',           luz:'Fuego de la chimenea y lámparas'}
+];
+/* ======================================= */
+
+const ruta = f => encodeURI(CARPETA + '/' + f);
+const LS = 'evol-guion-v1';
+let estado = {hechas:{}, notas:{}};
+try { estado = Object.assign(estado, JSON.parse(localStorage.getItem(LS)||'{}')); } catch(e){}
+const guardar = () => { try{ localStorage.setItem(LS, JSON.stringify(estado)); }catch(e){} };
+
+const $ = (s,r=document) => r.querySelector(s);
+const el = (t,c,h) => { const e=document.createElement(t); if(c) e.className=c; if(h!=null) e.innerHTML=h; return e; };
+
+function imagen(archivo, alt){
+  const img = new Image();
+  img.src = ruta(archivo); img.alt = alt; img.loading = 'lazy';
+  img.onerror = () => {
+    const f = el('div','faltante','No se encontró<br>'+archivo);
+    img.replaceWith(f);
+  };
+  return img;
+}
+
+// Lista de imágenes por spot para el visor
+SPOTS.forEach(s=>{
+  s.items = [{archivo:s.real, titulo:s.nombre+' – lugar real'}];
+  for(let i=1;i<=s.ideas;i++) s.items.push({archivo:`${s.prefijo} idea ${i}.png`, titulo:`${s.nombre} – idea ${i}`});
+});
+
+const menu = $('#menu'), cont = $('#spots');
+
+SPOTS.forEach(s=>{
+  const a = el('a','', s.nombre+'<small id="m-'+s.id+'"></small>');
+  a.href = '#'+s.id; menu.append(a); s.link = a;
+
+  const sec = el('section','spot'); sec.id = s.id;
+  const cab = el('div','cabecera','<h2>'+s.nombre+'</h2><p class="luz">'+s.luz+'</p>');
+  const cuerpo = el('div','cuerpo');
+
+  const real = el('div','real');
+  const b = el('button'); b.type='button'; b.setAttribute('aria-label','Ampliar foto del lugar');
+  b.append(imagen(s.real, 'Foto real de '+s.nombre));
+  b.onclick = () => abrir(s,0);
+  real.append(b, el('p','', 'Así es el lugar'));
+
+  const der = el('div');
+  der.append(el('h3','', s.ideas===1 ? '1 idea de toma' : s.ideas+' ideas de toma'));
+  const grid = el('div','ideas');
+  s.items.slice(1).forEach((it,k)=>{
+    const card = el('div','toma'); card.id = 'c-'+it.archivo;
+    const foto = el('button','foto'); foto.type='button'; foto.setAttribute('aria-label','Ampliar '+it.titulo);
+    foto.append(imagen(it.archivo, it.titulo));
+    foto.onclick = () => abrir(s,k+1);
+    const lab = el('label'); const chk = el('input'); chk.type='checkbox';
+    chk.checked = !!estado.hechas[it.archivo];
+    chk.onchange = () => { estado.hechas[it.archivo]=chk.checked; if(!chk.checked) delete estado.hechas[it.archivo]; guardar(); pintar(); };
+    lab.append(chk, document.createTextNode('Idea '+(k+1)+' · grabada'));
+    card.append(foto, lab); grid.append(card);
+    it.card=card; it.chk=chk;
+  });
+  der.append(grid);
+
+  const notas = el('div','notas');
+  const ta = el('textarea'); ta.placeholder = 'Notas para '+s.nombre+' (vestuario, movimiento, hora, lo que no quieres olvidar)';
+  ta.value = estado.notas[s.id]||'';
+  ta.oninput = () => { estado.notas[s.id]=ta.value; guardar(); };
+  ta.setAttribute('aria-label','Notas de '+s.nombre);
+  notas.append(ta); der.append(notas);
+
+  cuerpo.append(real, der); sec.append(cab, cuerpo); cont.append(sec);
+});
+
+function pintar(){
+  let hechas=0, total=0;
+  SPOTS.forEach(s=>{
+    let h=0;
+    s.items.slice(1).forEach(it=>{
+      const ok = !!estado.hechas[it.archivo];
+      it.card.classList.toggle('hecha',ok); it.chk.checked=ok; if(ok)h++;
+    });
+    hechas+=h; total+=s.ideas;
+    $('#m-'+s.id).textContent = h+'/'+s.ideas;
+    s.link.classList.toggle('listo', h===s.ideas);
+  });
+  $('#total').textContent = hechas+' de '+total+' tomas grabadas';
+  $('#avance').style.width = (total? hechas/total*100:0)+'%';
+}
+pintar();
+
+$('#reiniciar').onclick = () => {
+  if(confirm('¿Borrar todas las marcas de tomas grabadas? Las notas se conservan.')){
+    estado.hechas = {}; guardar(); pintar();
+  }
+};
+
+/* Visor */
+let vs=null, vi=0;
+const visor=$('#visor');
+function mostrar(){
+  const it = vs.items[vi];
+  $('#visorImg').src = ruta(it.archivo); $('#visorImg').alt = it.titulo;
+  $('#visorTxt').textContent = it.titulo+' ('+(vi+1)+'/'+vs.items.length+')';
+}
+function abrir(s,i){ vs=s; vi=i; mostrar(); visor.classList.add('abierto'); $('#cerrar').focus(); }
+function cerrar(){ visor.classList.remove('abierto'); }
+function mover(d){ vi=(vi+d+vs.items.length)%vs.items.length; mostrar(); }
+$('#cerrar').onclick=cerrar; $('#ant').onclick=()=>mover(-1); $('#sig').onclick=()=>mover(1);
+visor.onclick=e=>{ if(e.target===visor) cerrar(); };
+document.addEventListener('keydown',e=>{
+  if(!visor.classList.contains('abierto')) return;
+  if(e.key==='Escape') cerrar();
+  if(e.key==='ArrowLeft') mover(-1);
+  if(e.key==='ArrowRight') mover(1);
+});
+</script>
+</body>
+</html>
