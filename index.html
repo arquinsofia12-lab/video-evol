@@ -17,14 +17,13 @@
 }
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{background:var(--fondo);color:var(--texto);font:400 16px/1.5 var(--cuerpo)}
+body{background:var(--fondo);color:var(--texto);font:400 16px/1.55 var(--cuerpo)}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--oro);outline-offset:2px}
 
-/* Portada */
-header.portada{padding:56px 24px 36px;max-width:1200px;margin:auto}
+header.portada{padding:56px 24px 28px;max-width:1200px;margin:auto}
 .marca{font:800 clamp(72px,16vw,180px)/.85 var(--titulo);letter-spacing:-.04em;color:var(--oro)}
-.sub{margin-top:18px;font-size:19px;color:var(--suave);max-width:46ch}
+.sub{margin-top:18px;font-size:19px;color:var(--suave);max-width:50ch}
 .resumen{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .barra{flex:1 1 220px;max-width:420px;height:10px;background:var(--panel);border-radius:99px;overflow:hidden;border:1px solid var(--linea)}
 .barra i{display:block;height:100%;width:0;background:var(--oro);transition:width .4s}
@@ -32,7 +31,17 @@ header.portada{padding:56px 24px 36px;max-width:1200px;margin:auto}
 #reiniciar{background:none;border:1px solid var(--linea);padding:6px 14px;border-radius:99px;color:var(--suave)}
 #reiniciar:hover{border-color:var(--oro);color:var(--texto)}
 
-/* Navegación */
+.guia{max-width:1200px;margin:0 auto;padding:8px 24px 28px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.guia section{background:var(--panel);border:1px solid var(--linea);border-radius:14px;padding:20px}
+.guia h2{font:800 22px/1.1 var(--titulo);margin-bottom:10px}
+.guia p{color:var(--suave);font-size:15px}
+.guia ul{margin:10px 0 0 18px;font-size:15px}
+.guia li{margin-bottom:4px}
+.guia .grupo{margin-top:12px}
+.guia .grupo b{display:block;color:var(--dusk);font-weight:700;font-size:15px}
+.guia .grupo a{color:var(--texto)}
+.aviso{margin-top:12px;padding:10px 12px;border-left:3px solid var(--oro);background:rgba(227,168,87,.08);font-size:14px;color:var(--texto)}
+
 nav{position:sticky;top:0;z-index:20;background:rgba(29,22,17,.94);backdrop-filter:blur(8px);border-block:1px solid var(--linea)}
 nav .fila{max-width:1200px;margin:auto;display:flex;gap:8px;padding:10px 24px;overflow-x:auto}
 nav a{flex:none;text-decoration:none;color:var(--texto);padding:8px 14px;border-radius:99px;border:1px solid var(--linea);font-weight:500;font-size:15px}
@@ -41,42 +50,52 @@ nav a:hover{border-color:var(--oro)}
 nav a.listo{border-color:var(--ok)}
 nav a.listo small{color:var(--ok)}
 
-/* Spots */
 main{max-width:1200px;margin:auto;padding:12px 24px 80px}
-section.spot{padding:44px 0;border-bottom:1px solid var(--linea)}
+section.spot{padding:48px 0;border-bottom:1px solid var(--linea)}
 section.spot:last-child{border:0}
 .cabecera h2{font:800 clamp(30px,5vw,48px)/1.05 var(--titulo);letter-spacing:-.02em}
 .luz{margin-top:8px;color:var(--dusk);font-weight:500}
-.cuerpo{display:grid;grid-template-columns:260px 1fr;gap:28px;margin-top:24px;align-items:start}
-.real{background:var(--panel);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+.intro{margin-top:14px;max-width:68ch;font-size:17px}
+.prep{margin-top:16px;max-width:68ch}
+.cuerpo{display:grid;grid-template-columns:260px 1fr;gap:28px;margin-top:26px;align-items:start}
+.real{background:var(--panel);border:1px solid var(--linea);border-radius:14px;overflow:hidden;position:sticky;top:80px}
 .real button{display:block;width:100%;border:0;background:none;padding:0}
 .real img{width:100%;max-height:420px;object-fit:cover;display:block}
 .real p{padding:10px 14px;font-size:14px;color:var(--suave)}
-h3{font:500 15px var(--cuerpo);color:var(--suave);margin-bottom:12px}
-.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
-.toma{background:var(--panel);border:1px solid var(--linea);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.ideas{display:grid;gap:18px}
+.toma{display:grid;grid-template-columns:minmax(220px,330px) 1fr;background:var(--panel);border:1px solid var(--linea);border-radius:12px;overflow:hidden;transition:border-color .2s}
 .toma.hecha{border-color:var(--ok)}
-.toma .foto{position:relative;display:block;width:100%;padding:0;border:0;background:#000;aspect-ratio:4/3}
-.toma img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s}
-.toma.hecha img{opacity:.55}
-.toma label{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;font-weight:500}
-.toma input{width:20px;height:20px;accent-color:var(--ok)}
-.faltante{display:grid;place-items:center;height:100%;padding:12px;text-align:center;font-size:13px;color:var(--suave);background:var(--panel)}
+.toma .foto{position:relative;display:block;width:100%;height:100%;min-height:200px;padding:0;border:0;background:#000}
+.toma .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s}
+.toma.hecha .foto img{opacity:.5}
+.info{padding:16px 18px}
+.info h3{font:800 20px/1.15 var(--titulo);margin-bottom:10px}
+.info dt{color:var(--dusk);font-weight:700;font-size:14px}
+.info dd{margin:0 0 9px;font-size:15.5px}
+.info dd.para{color:var(--oro)}
+.info label{display:inline-flex;align-items:center;gap:10px;margin-top:4px;cursor:pointer;font-weight:500}
+.info input{width:20px;height:20px;accent-color:var(--ok)}
+.faltante{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center;font-size:13px;color:var(--suave);background:var(--panel)}
 .notas{margin-top:22px}
 .notas textarea{width:100%;min-height:76px;resize:vertical;background:var(--panel);color:var(--texto);border:1px solid var(--linea);border-radius:10px;padding:12px;font:inherit}
 .notas textarea::placeholder{color:#8a7a64}
 
-/* Visor */
 #visor{position:fixed;inset:0;z-index:50;background:rgba(10,7,5,.95);display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px}
 #visor.abierto{display:flex}
 #visor img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:8px}
-#visor .pie{margin-top:14px;display:flex;gap:12px;align-items:center;color:var(--suave)}
+#visor .pie{margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;color:var(--suave)}
 #visor button{background:var(--panel);border:1px solid var(--linea);border-radius:99px;padding:8px 18px}
 #visor button:hover{border-color:var(--oro)}
 
-@media (max-width:760px){
+@media (max-width:860px){
+  .guia{grid-template-columns:1fr}
   .cuerpo{grid-template-columns:1fr}
+  .real{position:static}
   .real img{max-height:320px}
+}
+@media (max-width:620px){
+  .toma{grid-template-columns:1fr}
+  .toma .foto{height:auto;min-height:0;aspect-ratio:4/3}
   header.portada{padding-top:36px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -86,13 +105,34 @@ h3{font:500 15px var(--cuerpo);color:var(--suave);margin-bottom:12px}
 
 <header class="portada">
   <h1 class="marca">EVOL</h1>
-  <p class="sub">Guion de rodaje. Mira cada lugar, elige tus ideas de toma y marca las que ya grabaste.</p>
+  <p class="sub">Guion de rodaje. Cada lugar tiene su foto real y sus tomas explicadas: qué se ve, qué haces y cómo lo sientes.</p>
   <div class="resumen">
     <div class="barra" aria-hidden="true"><i id="avance"></i></div>
     <span id="total"></span>
     <button id="reiniciar" type="button">Reiniciar avance</button>
   </div>
 </header>
+
+<div class="guia">
+  <section>
+    <h2>Vestuario y detalles fijos</h2>
+    <p>Para que todas las tomas parezcan del mismo día, repite siempre lo mismo.</p>
+    <ul>
+      <li>Sudadera negra de peluche con "NEW YORK"</li>
+      <li>Pantalón negro tipo cargo</li>
+      <li>Tenis blancos</li>
+      <li>Lentes dorados sin marco</li>
+      <li>Reloj negro en la muñeca</li>
+      <li>Arete dorado pequeño</li>
+    </ul>
+    <p class="aviso">En la referencia del corredor (toma 4) aparecen tenis grises. En el loft (toma 2) se graba sin zapatos, con calcetines blancos.</p>
+  </section>
+  <section>
+    <h2>Plan de luz</h2>
+    <p>La luz natural baja dura poco cada tarde. Conviene repartir los lugares de atardecer y los interiores en varios días. El garaje y la mesa se pueden grabar a cualquier hora.</p>
+    <div id="plan"></div>
+  </section>
+</div>
 
 <nav aria-label="Lugares de grabación"><div class="fila" id="menu"></div></nav>
 <main id="spots"></main>
@@ -110,23 +150,99 @@ h3{font:500 15px var(--cuerpo);color:var(--suave);margin-bottom:12px}
 <script>
 /* ============ CONFIGURACIÓN ============
    Las imágenes se leen de la carpeta CARPETA, por nombre:
-   "<prefijo> idea 1.png", "<prefijo> idea 2.png"... y el archivo "real".
-   Para cambiar el orden de rodaje, reordena esta lista.
-   La nota de luz es una sugerencia: edítala a tu gusto. */
+   "<prefijo> idea 1.jpg", "<prefijo> idea 2.jpg"... y el archivo "real".
+   Busca primero .jpg y, si no existe, prueba .png, .jpeg y .webp.
+   (Si un spot usa otra palabra, como "ideas", se indica en "palabra".)
+   Para cambiar el orden de rodaje, reordena SPOTS.
+   Claves de cada toma: n título, v qué se ve, h qué hace EVOL, l luz, i indicación. */
 const CARPETA = 'video evol';
+const BLOQUES = {
+  a:'Atardecer, exteriores',
+  i:'Interiores con sol bajo',
+  c:'Luz controlada, cualquier hora'
+};
 const SPOTS = [
-  {id:'balcon',   nombre:'Balcón',                   prefijo:'balcon',                   ideas:4, real:'balcon real.png',                  luz:'Atardecer con el sol bajo al fondo'},
-  {id:'cabana',   nombre:'Cabaña exterior',          prefijo:'cabaña exterior',          ideas:5, real:'cabaña exterior real.png',         luz:'Atardecer sobre la fachada'},
-  {id:'corredor', nombre:'Corredor exterior con sillas', prefijo:'corredor exterior sillas', ideas:4, real:'corredor exterior sillas real.png', luz:'Atardecer a contraluz desde el valle'},
-  {id:'garaje',   nombre:'Garaje',                   prefijo:'garaje',                   ideas:1, real:'garaje real.jpg',                  luz:'Espacio oscuro con luz de proyector'},
-  {id:'habitacion',nombre:'Habitación',              prefijo:'habitacion',               ideas:4, real:'habitacion real.png',              luz:'Luz cálida entrando por la ventana'},
-  {id:'loft',     nombre:'Loft con sofá',            prefijo:'loft con sofa',            ideas:5, real:'loft con sofa real.png',           luz:'Luz cálida de ventana, ambiente tenue'},
-  {id:'chimenea', nombre:'Sala de la chimenea',      prefijo:'sala chimenea',            ideas:5, real:'sala chimenea real.png',           luz:'Fuego de la chimenea y lámparas'}
+{id:'balcon',nombre:'Balcón',prefijo:'balcon',real:'balcon real.png',bloque:'a',
+ luz:'Tarde nublada y atardecer dorado',
+ intro:'El balcón de la cabaña da al valle. EVOL está solo con el paisaje: primero con la luz suave de la tarde y después con el sol cayendo al fondo. Es un lugar de calma y de mirada hacia afuera.',
+ tomas:[
+ {n:'Apoyado en la baranda',v:'Plano medio lateral y vertical. EVOL se apoya con los antebrazos en la baranda negra; atrás se ven el valle, las nubes y una silla al fondo del corredor.',h:'Se inclina hacia adelante, apoya los antebrazos y baja la mirada hacia el jardín, sin mirar a cámara.',l:'Tarde con nubes, luz suave.',i:'Relaja los hombros y quédate quieto. Que se note que estás pensando.'},
+ {n:'De pie, mirando hacia abajo',v:'Plano entero vertical con cámara baja. EVOL de pie junto a la baranda, con el cielo y las nubes sobre él y el piso de baldosas a su lado.',h:'Manos en los bolsillos de la sudadera, cabeza inclinada y mirada al piso.',l:'Cielo azul con nubes, luz de tarde.',i:'Respira lento y no te muevas. La imagen funciona por la quietud.'},
+ {n:'El reloj y el sol',v:'Toma de detalle. Una mano con el reloj negro sobre la baranda; el atardecer y el sol quedan desenfocados al fondo. La cara no sale.',h:'Apoya la mano en la baranda y la aprieta suavemente, casi sin moverse.',l:'Sol bajo y dorado dentro del encuadre.',i:'Solo se ve la mano. Cuida que el reloj quede limpio y visible.'},
+ {n:'Atardecer desde el corredor',v:'Plano muy abierto y panorámico. EVOL aparece pequeño al fondo del corredor, de espaldas; la pared de troncos y las columnas enmarcan el atardecer.',h:'Camina hacia el fondo, se detiene de espaldas junto a la baranda y mira el sol.',l:'Atardecer fuerte, con el sol en el horizonte.',i:'Llega al punto marcado y quédate de pie. No hace falta actuar, solo estar ahí.'}
+ ]},
+{id:'cabana',nombre:'Cabaña exterior',prefijo:'cabaña exterior',real:'cabaña exterior real.png',bloque:'a',
+ luz:'Atardecer y hora azul',
+ intro:'La fachada de la cabaña, con su madera, su piedra y su techo rojo. EVOL se sienta frente a la casa y el lugar cambia con la hora: sol naranja, nubes suaves y después la noche con las luces encendidas.',
+ mat:'Para la toma 2 hay que encender las lámparas del corredor y las luces de las ventanas antes de que oscurezca del todo.',
+ tomas:[
+ {n:'Sentado a ras del pasto',v:'Plano general muy bajo, casi a nivel del césped. EVOL sentado en el escalón de la entrada, la casa grande detrás y el sol poniéndose a la izquierda.',h:'Sentado, con los antebrazos sobre las rodillas, mira hacia un lado, hacia el sol.',l:'Atardecer naranja; el pasto brilla a contraluz.',i:'Mira hacia el sol con calma y sin sonreír.'},
+ {n:'Hora azul con luces encendidas',v:'Mismo punto de la toma 1, pero de noche. La cabaña tiene las luces encendidas y el cielo está azul oscuro con una franja naranja al fondo.',h:'Sentado en el mismo escalón, con la mirada hacia un lado.',l:'Hora azul, poco después de ponerse el sol, con luces cálidas en la casa.',i:'Quédate muy quieto. Es la toma más lenta del spot.'},
+ {n:'De espaldas frente a la casa',v:'Plano medio por detrás del hombro. EVOL de espaldas mirando la cabaña; el sol suave entra desde la izquierda y una palma enmarca el borde derecho.',h:'De pie, con las manos en los bolsillos, mira la casa sin moverse.',l:'Atardecer suave, cielo con nubes.',i:'Párate firme y relajado. La cámara está detrás de ti.'},
+ {n:'Cabeza baja en el escalón',v:'Plano medio-general. EVOL sentado en el escalón de piedra con la cabaña detrás y un cielo nublado con tonos rosados.',h:'Sentado, con las manos entrelazadas y la cabeza agachada.',l:'Atardecer nublado, luz suave y pareja.',i:'Baja la cabeza despacio y mantén la pose unos segundos.'},
+ {n:'Perfil dorado',v:'Primer plano de perfil. El sol dorado ilumina la sudadera de peluche; atrás, el corredor y la baranda se ven desenfocados.',h:'Sentado, con la cabeza baja y las manos juntas. Se ve el reloj.',l:'Hora dorada, contraluz cálido.',i:'Ojos hacia abajo y cara relajada. Esta toma pide la luz más baja del día: ten todo listo antes.'}
+ ]},
+{id:'corredor',nombre:'Corredor exterior con sillas',prefijo:'corredor exterior sillas',real:'corredor exterior sillas real.png',bloque:'a',
+ luz:'Atardecer con sol bajo',
+ intro:'Un corredor con dos sillas negras y baranda de hierro, con vista a las colinas. Es más íntimo que el balcón: EVOL se queda en silencio y la luz del atardecer entra de lado.',
+ tomas:[
+ {n:'De pie mirando el paisaje',v:'Plano medio por detrás de EVOL. Una silla desenfocada a la izquierda y una columna a la derecha forman el marco; se ven colinas y nubes.',h:'De pie, de perfil o de espaldas, mira el paisaje con una mano en la baranda.',l:'Tarde con cielo azul y nubes, sol suave.',i:'Mira a lo lejos y quédate quieto unos segundos.'},
+ {n:'Sentado en la silla',v:'Plano bajo con una silla desenfocada en primer plano. EVOL sentado de lado, con los árboles y las colinas al fondo.',h:'Sentado, inclinado hacia adelante, con los antebrazos sobre las piernas y la mirada baja.',l:'Sol bajo que dibuja sombras largas sobre las baldosas.',i:'Cuida que los tenis blancos se vean bien. No mires a cámara.'},
+ {n:'Primer plano del rostro',v:'Primer plano de perfil con los lentes dorados. La baranda y las plantas del fondo se ven como luces suaves.',h:'Cabeza baja y mirada hacia abajo, sin mover la cara.',l:'Luz cálida de lado sobre el rostro.',i:'Relaja la mandíbula y parpadea lento. De cerca se nota cualquier gesto.'},
+ {n:'Silla al atardecer',v:'Plano ancho de cine. EVOL sentado en la silla; el sol cae entre las montañas a su derecha y el piso refleja la luz. La silla del frente y las columnas enmarcan la escena.',h:'Sentado de lado, con la mirada baja y las manos sobre las piernas.',l:'Atardecer a contraluz, con destello de lente.',i:'En esta referencia lleva tenis grises. Si el resto del video usa tenis blancos, grábala con los blancos.'}
+ ]},
+{id:'garaje',nombre:'Garaje',prefijo:'garaje',real:'garaje real.jpg',bloque:'c',
+ luz:'Luz de estudio, ambiente oscuro',
+ intro:'El garaje real está vacío, con dos portones blancos y paredes de madera. En el video se convierte en el estudio de EVOL: fondos, luces y un proyector con su imagen. Aquí se ve su lado de artista.',
+ mat:'Hay que montar: un fondo blanco y uno negro, dos tubos LED cálidos, un softbox, un proyector, dos cajas de transporte con el logo EVOL, un banco alto, una laptop y una alfombra negra en el centro.',
+ tomas:[
+ {n:'EVOL en su estudio',v:'Plano general. EVOL de pie en el centro sobre la alfombra negra, entre el fondo blanco y el negro. A la derecha, la pared proyecta su nombre y su cara en blanco y negro.',h:'De pie, con las manos en los bolsillos y la mirada hacia un lado.',l:'Luz controlada: tubos LED cálidos, luz sobre el fondo blanco y el proyector. Un poco de humo en el aire.',i:'Postura firme y mirada seria, sin sonreír.'}
+ ]},
+{id:'habitacion',nombre:'Habitación',prefijo:'habitacion',real:'habitacion real.png',bloque:'i',
+ luz:'Sol bajo entrando por la ventana',
+ intro:'El cuarto del segundo piso, con techo de madera inclinado y una ventana triangular. Es el espacio más privado: EVOL está solo con la cama y el sol que entra por las persianas.',
+ tomas:[
+ {n:'Recostado, rostro cerca',v:'Primer plano. EVOL con la cabeza apoyada sobre el brazo y la mirada hacia un lado; la ventana y el sol quedan desenfocados atrás.',h:'Recostado en la cama, con lentes y reloj visibles.',l:'Sol dorado atravesando las persianas.',i:'Casi sin moverte. Solo mueve los ojos, despacio.'},
+ {n:'Borde de la cama, entre puertas',v:'Plano panorámico bajo. Las puertas del cuarto enmarcan la escena; EVOL sentado en la cama, con el sol entrando por la ventana y rayas de luz sobre el piso.',h:'Sentado en el borde de la cama, con la cabeza baja y las manos juntas.',l:'Sol directo por la ventana, con destello y reflejos en el piso de madera.',i:'La cámara está a ras del piso. Mantén la cabeza baja y no te muevas hasta que el sol esté en su lugar.'},
+ {n:'Acostado, visto desde arriba',v:'Toma cenital. EVOL boca arriba en la cama, con la cabeza sobre las almohadas verde y negra; la luz de la ventana dibuja una rejilla sobre la cobija y el piso.',h:'Acostado, con una mano detrás de la cabeza y la otra sobre el abdomen, mirando hacia un lado.',l:'Luz cálida de la tarde en forma de rejilla.',i:'Acuéstate recto y mira hacia la ventana. La cámara está sobre ti: no la mires.'},
+ {n:'Sentado, frente a la ventana',v:'Plano medio. EVOL sentado en la cama frente a la ventana triangular; la lámpara de la mesa de noche aparece borrosa a la derecha.',h:'Inclinado hacia adelante, con los antebrazos sobre las piernas y la cabeza baja.',l:'Sol de tarde cálido que entra por las persianas.',i:'Quédate quieto con la cabeza baja, sin mirar a cámara.'}
+ ]},
+{id:'loft',nombre:'Loft con sofá',prefijo:'loft con sofa',real:'loft con sofa real.png',bloque:'i',
+ luz:'Contraluz por las persianas',
+ intro:'El loft es la sala de descanso del segundo piso: sofá gris, televisor apagado, lámpara de trípode y un ventanal con persianas. Es una escena de pausa y silencio, con la luz entrando en franjas.',
+ mat:'Encender la lámpara de trípode para la toma 4. La toma 2 se graba sin zapatos.',
+ tomas:[
+ {n:'Silueta frente a la ventana',v:'Plano ancho. Un sofá borroso en primer plano; EVOL sentado de perfil mirando el ventanal, con la TV apagada y la lámpara a la izquierda.',h:'Sentado en el sofá, mirando la ventana de lado.',l:'Contraluz fuerte: el sol atraviesa las persianas y deja a EVOL casi en silueta.',i:'Mira la luz sin entrecerrar los ojos. Lo importante es la silueta.'},
+ {n:'Tumbado en la alfombra',v:'Toma cenital. EVOL de lado sobre la alfombra gris, frente a la TV apagada; el sofá queda a la derecha y la luz de la ventana dibuja franjas.',h:'Acostado de lado, con la cabeza apoyada en el brazo y la mirada hacia la TV.',l:'Franjas de sol sobre la alfombra y el sofá.',i:'Sin zapatos, con calcetines blancos. Cabeza apoyada y mirada perdida.'},
+ {n:'De espaldas, mirando afuera',v:'Plano entero por detrás. EVOL de pie frente al ventanal con persianas; a la izquierda la TV y la planta, a la derecha el sofá.',h:'De pie, con las manos en los bolsillos, mira por la ventana.',l:'Luz fuerte por la ventana que deja el resto del cuarto en penumbra.',i:'Quédate de espaldas. Gira la cabeza solo un poco hacia la luz.'},
+ {n:'Sentado en el sofá',v:'Plano medio-general. EVOL en el sofá, inclinado hacia adelante, con la lámpara encendida atrás y una mesa borrosa en primer plano.',h:'Sentado, con las manos juntas y la mirada baja.',l:'Lámpara cálida encendida y franjas de luz por las persianas.',i:'Cabeza baja y hombros sueltos.'},
+ {n:'Primer plano del rostro',v:'Primer plano. EVOL mirando hacia abajo, con el ventanal de persianas y el sofá desenfocados atrás.',h:'Cabeza baja, con los lentes dorados y la sudadera de peluche cerca del rostro.',l:'Contraluz cálido que marca el contorno del pelo.',i:'Respira lento y no cierres los ojos del todo.'}
+ ]},
+{id:'chimenea',nombre:'Sala de la chimenea',prefijo:'sala chimenea',real:'sala chimenea real.png',bloque:'i',
+ luz:'Luz de ventana y fuego',
+ intro:'La sala principal tiene una chimenea de piedra en la esquina, muebles de madera oscura y cortinas beige. EVOL está de pie, sentado o en el piso, siempre con la mirada baja o hacia la ventana.',
+ mat:'Para la toma 4 hay que encender la chimenea con leña, y tener a mano algo para apagarla con seguridad.',
+ tomas:[
+ {n:'Sentado en el piso',v:'Plano alto, desde arriba. EVOL sentado en el piso de cerámica, apoyado en la banca de madera; atrás se ven la chimenea, las sillas y la puerta negra.',h:'Sentado, con los antebrazos sobre las rodillas y la mirada hacia un lado.',l:'Franjas de sol de la ventana sobre el piso.',i:'Siéntate donde cae la luz y no mires a cámara.'},
+ {n:'Mano sobre la repisa',v:'Plano entero bajo, con sillas de madera desenfocadas en primer plano. EVOL junto a la chimenea, con la TV colgada arriba.',h:'De pie, con una mano en el bolsillo y la otra apoyada en la repisa de piedra; mira hacia abajo.',l:'Luz de la ventana de la izquierda, cálida y suave.',i:'Apoya la mano con calma y mira hacia abajo, sin prisa.'},
+ {n:'Junto a la ventana',v:'Plano ancho de cine. EVOL de perfil junto a la ventana de cortina beige; atrás la chimenea y la TV; muebles desenfocados en primer plano.',h:'De pie, con las manos en los bolsillos, mira hacia afuera por la ventana.',l:'Luz entrando de lado, con un rayo y destello a la derecha.',i:'Mira por la ventana y quédate quieto. Deja que la luz te llegue a la cara.'},
+ {n:'Manos y fuego',v:'Primer plano de las manos entrelazadas con el reloj. Arriba se ve parte de la cara con los lentes; la chimenea encendida queda borrosa al fondo.',h:'Sentado, inclinado hacia adelante, con las manos juntas.',l:'Fuego de la chimenea, luz cálida y baja.',i:'Aprieta un poco las manos y baja la cabeza. Es una toma de detalle.'},
+ {n:'Sentado en la silla',v:'Plano medio. EVOL sentado en la silla de madera, con la ventana de cortinas al fondo y una mesa borrosa en primer plano.',h:'Inclinado hacia adelante, con las manos juntas y la cabeza baja.',l:'Luz de ventana de lado, cálida.',i:'Hombros sueltos y mirada abajo.'}
+ ]},
+{id:'mesa',nombre:'Mesa en casa',prefijo:'mesa en casa',palabra:'ideas',real:'mesa en casa real.png',bloque:'c',
+ luz:'Una sola luz cálida sobre la mesa',
+ intro:'Un cuarto oscuro y casi vacío, con una mesa redonda cubierta de negro y una lámpara colgante encima. EVOL juega cartas solo. El ambiente es tenso y silencioso: la luz cae solo sobre él y la mesa.',
+ mat:'Hay que preparar: mesa redonda con mantel negro, lámpara colgante de luz cálida, fichas rojas, negras y blancas, y una o dos barajas. El cuarto debe quedar en penumbra.',
+ tomas:[
+ {n:'Mirando sus cartas',v:'Plano medio lateral y bajo. EVOL de lado, mirando las dos cartas que tiene en la mano; fichas desenfocadas en primer plano y la lámpara arriba.',h:'Sentado, sostiene las cartas cerca del pecho y las mira con atención.',l:'Una luz cálida desde arriba; el resto en penumbra.',i:'Cara seria y sin mostrar emoción, como en una partida real.'},
+ {n:'Manos, fichas y cartas',v:'Primer plano de las manos sobre la mesa. Una mano toma una ficha roja de una pila y la otra sostiene dos cartas; en el centro hay tres cartas boca arriba.',h:'Una mano mueve una ficha y la otra sostiene las cartas. Se ve el reloj.',l:'Luz cálida y baja, con fichas desenfocadas.',i:'Mueve la ficha lento y con seguridad. Esta toma es solo de manos.'},
+ {n:'Toma desde arriba',v:'Plano cenital. EVOL solo en el centro del cuarto, sentado frente a la mesa redonda con fichas y tres cartas; la lámpara arriba y el piso de cerámica alrededor.',h:'Sentado, mirando sus cartas, sin levantar la vista.',l:'Un círculo de luz sobre la mesa y las esquinas del cuarto oscuras.',i:'La cámara está sobre ti: no la mires. Quédate quieto.'}
+ ]}
 ];
 /* ======================================= */
 
 const ruta = f => encodeURI(CARPETA + '/' + f);
-const LS = 'evol-guion-v1';
+const LS = 'evol-guion-v2';
 let estado = {hechas:{}, notas:{}};
 try { estado = Object.assign(estado, JSON.parse(localStorage.getItem(LS)||'{}')); } catch(e){}
 const guardar = () => { try{ localStorage.setItem(LS, JSON.stringify(estado)); }catch(e){} };
@@ -134,20 +250,42 @@ const guardar = () => { try{ localStorage.setItem(LS, JSON.stringify(estado)); }
 const $ = (s,r=document) => r.querySelector(s);
 const el = (t,c,h) => { const e=document.createElement(t); if(c) e.className=c; if(h!=null) e.innerHTML=h; return e; };
 
+const EXT = ['jpg','png','jpeg','webp','JPG','PNG','JPEG'];
+const resuelto = {};
 function imagen(archivo, alt){
-  const img = new Image();
-  img.src = ruta(archivo); img.alt = alt; img.loading = 'lazy';
+  const img = new Image(); let k = 0;
+  img.alt = alt; img.loading = 'lazy';
+  img.onload = () => { resuelto[archivo] = EXT[k]; };
   img.onerror = () => {
-    const f = el('div','faltante','No se encontró<br>'+archivo);
-    img.replaceWith(f);
+    k++;
+    if(k < EXT.length) img.src = ruta(archivo+'.'+EXT[k]);
+    else img.replaceWith(el('div','faltante','No se encontró<br>'+archivo+'.jpg'));
   };
+  img.src = ruta(archivo+'.'+EXT[0]);
   return img;
 }
 
-// Lista de imágenes por spot para el visor
 SPOTS.forEach(s=>{
-  s.items = [{archivo:s.real, titulo:s.nombre+' – lugar real'}];
-  for(let i=1;i<=s.ideas;i++) s.items.push({archivo:`${s.prefijo} idea ${i}.png`, titulo:`${s.nombre} – idea ${i}`});
+  s.real = s.real.replace(/\.\w+$/,'');
+  s.items = [{archivo:s.real, titulo:s.nombre+', lugar real'}];
+  s.tomas.forEach((t,k)=>{
+    t.archivo = `${s.prefijo} ${s.palabra||'idea'} ${k+1}`;
+    s.items.push({archivo:t.archivo, titulo:`${s.nombre}, idea ${k+1}: ${t.n}`});
+  });
+});
+
+/* Plan de luz */
+const plan = $('#plan');
+Object.keys(BLOQUES).forEach(b=>{
+  const lista = SPOTS.filter(s=>s.bloque===b);
+  if(!lista.length) return;
+  const g = el('div','grupo','<b>'+BLOQUES[b]+'</b>');
+  lista.forEach((s,i)=>{
+    const a = el('a','',s.nombre); a.href='#'+s.id;
+    if(i) g.append(', ');
+    g.append(a);
+  });
+  plan.append(g);
 });
 
 const menu = $('#menu'), cont = $('#spots');
@@ -157,7 +295,8 @@ SPOTS.forEach(s=>{
   a.href = '#'+s.id; menu.append(a); s.link = a;
 
   const sec = el('section','spot'); sec.id = s.id;
-  const cab = el('div','cabecera','<h2>'+s.nombre+'</h2><p class="luz">'+s.luz+'</p>');
+  const cab = el('div','cabecera','<h2>'+s.nombre+'</h2><p class="luz">'+s.luz+'</p><p class="intro">'+s.intro+'</p>');
+  if(s.mat) cab.append(el('p','aviso prep','<b>Para preparar:</b> '+s.mat));
   const cuerpo = el('div','cuerpo');
 
   const real = el('div','real');
@@ -167,24 +306,30 @@ SPOTS.forEach(s=>{
   real.append(b, el('p','', 'Así es el lugar'));
 
   const der = el('div');
-  der.append(el('h3','', s.ideas===1 ? '1 idea de toma' : s.ideas+' ideas de toma'));
-  const grid = el('div','ideas');
-  s.items.slice(1).forEach((it,k)=>{
-    const card = el('div','toma'); card.id = 'c-'+it.archivo;
-    const foto = el('button','foto'); foto.type='button'; foto.setAttribute('aria-label','Ampliar '+it.titulo);
-    foto.append(imagen(it.archivo, it.titulo));
+  const lista = el('div','ideas');
+  s.tomas.forEach((t,k)=>{
+    const card = el('article','toma');
+    const foto = el('button','foto'); foto.type='button'; foto.setAttribute('aria-label','Ampliar idea '+(k+1));
+    foto.append(imagen(t.archivo, s.nombre+', idea '+(k+1)));
     foto.onclick = () => abrir(s,k+1);
+    const info = el('div','info');
+    info.innerHTML = '<h3>Idea '+(k+1)+': '+t.n+'</h3><dl>'+
+      '<dt>Qué se ve</dt><dd>'+t.v+'</dd>'+
+      '<dt>Qué hace EVOL</dt><dd>'+t.h+'</dd>'+
+      '<dt>Luz y ambiente</dt><dd>'+t.l+'</dd>'+
+      '<dt>Para EVOL</dt><dd class="para">'+t.i+'</dd></dl>';
     const lab = el('label'); const chk = el('input'); chk.type='checkbox';
-    chk.checked = !!estado.hechas[it.archivo];
-    chk.onchange = () => { estado.hechas[it.archivo]=chk.checked; if(!chk.checked) delete estado.hechas[it.archivo]; guardar(); pintar(); };
-    lab.append(chk, document.createTextNode('Idea '+(k+1)+' · grabada'));
-    card.append(foto, lab); grid.append(card);
-    it.card=card; it.chk=chk;
+    chk.checked = !!estado.hechas[t.archivo];
+    chk.onchange = () => { if(chk.checked) estado.hechas[t.archivo]=true; else delete estado.hechas[t.archivo]; guardar(); pintar(); };
+    lab.append(chk, document.createTextNode('Toma grabada'));
+    info.append(lab);
+    card.append(foto, info); lista.append(card);
+    t.card=card; t.chk=chk;
   });
-  der.append(grid);
+  der.append(lista);
 
   const notas = el('div','notas');
-  const ta = el('textarea'); ta.placeholder = 'Notas para '+s.nombre+' (vestuario, movimiento, hora, lo que no quieres olvidar)';
+  const ta = el('textarea'); ta.placeholder = 'Notas para '+s.nombre+' (hora, movimiento, lo que no quieres olvidar)';
   ta.value = estado.notas[s.id]||'';
   ta.oninput = () => { estado.notas[s.id]=ta.value; guardar(); };
   ta.setAttribute('aria-label','Notas de '+s.nombre);
@@ -197,13 +342,13 @@ function pintar(){
   let hechas=0, total=0;
   SPOTS.forEach(s=>{
     let h=0;
-    s.items.slice(1).forEach(it=>{
-      const ok = !!estado.hechas[it.archivo];
-      it.card.classList.toggle('hecha',ok); it.chk.checked=ok; if(ok)h++;
+    s.tomas.forEach(t=>{
+      const ok = !!estado.hechas[t.archivo];
+      t.card.classList.toggle('hecha',ok); t.chk.checked=ok; if(ok)h++;
     });
-    hechas+=h; total+=s.ideas;
-    $('#m-'+s.id).textContent = h+'/'+s.ideas;
-    s.link.classList.toggle('listo', h===s.ideas);
+    hechas+=h; total+=s.tomas.length;
+    $('#m-'+s.id).textContent = h+'/'+s.tomas.length;
+    s.link.classList.toggle('listo', h===s.tomas.length);
   });
   $('#total').textContent = hechas+' de '+total+' tomas grabadas';
   $('#avance').style.width = (total? hechas/total*100:0)+'%';
@@ -221,7 +366,7 @@ let vs=null, vi=0;
 const visor=$('#visor');
 function mostrar(){
   const it = vs.items[vi];
-  $('#visorImg').src = ruta(it.archivo); $('#visorImg').alt = it.titulo;
+  $('#visorImg').src = ruta(it.archivo+'.'+(resuelto[it.archivo]||'jpg')); $('#visorImg').alt = it.titulo;
   $('#visorTxt').textContent = it.titulo+' ('+(vi+1)+'/'+vs.items.length+')';
 }
 function abrir(s,i){ vs=s; vi=i; mostrar(); visor.classList.add('abierto'); $('#cerrar').focus(); }
